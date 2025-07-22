@@ -1,0 +1,16 @@
+{
+  "name": "entrega-final",
+  "version": "1.0.0",
+  "description": "Sistema de gestión de productos con Express y Firebase",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Jainen B Albornoz",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
