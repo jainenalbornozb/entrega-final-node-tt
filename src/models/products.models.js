@@ -1,11 +1,23 @@
-export const getAllProducts = () => {
-    return [
-        {id: 1, name: 'Product 1', price: 100},
-        { id: 2, name: 'Product 2', price: 200 },
-        { id: 3, name: 'Product 3', price: 300 },
-        { id: 4, name: 'Product 4', price: 400 },
-        { id: 5, name: 'Product 5', price: 500 }
-        
+import { db } from './firebase.js';
 
-    ]
+import {collection, getDocs} from 'firebase/firestore';
+
+// Function to get all products
+
+const productsCollection = collection(db, 'products');
+
+
+export const getAllProducts = async () => {
+    try {
+        const snapshot = await getDocs(productsCollection);
+        const products = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+        }));
+        return products;
+    } catch (error) { 
+        console.error("Error fetching products:", error);
+        throw new Error("Could not fetch products");
+    }
+    
 }
